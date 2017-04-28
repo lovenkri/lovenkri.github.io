@@ -16,7 +16,7 @@ avatarImage.on({
 reader.addEventListener("load", function () {
     console.log("File loaded")
     avatarImage.remove(imgInstance)
-    avatarImage.setDimensions({width: 300, height: 300})
+    avatarImage.setDimensions({width: 320, height: 320})
     var imgElmt = new Image();
     imgElmt.onload = function() {
         imgInstance = new fabric.Image(imgElmt, {
@@ -54,8 +54,8 @@ downloader.addEventListener('click', function(e) {
     this.href = avatarImage.toDataURL({
         format: 'png',
         quality: 0.8,
-        width: 300,
-        height: 300
+        width: 320,
+        height: 320
     });
     this.download = 'lovenkri-avatar.png';
     window.open(this.href);
