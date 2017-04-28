@@ -8,7 +8,6 @@ var reader  = new FileReader();
 var imgInstance;
 
 function processKeys(evt) {
-    console.log('keydown')
     evt = evt || window.event;
 
     var movementDelta = 1;
@@ -62,7 +61,6 @@ function processKeys(evt) {
 }
 
 reader.addEventListener("load", function () {
-    console.log("File loaded")
     var imgElmt = new Image();
     imgElmt.onload = function() {
         imgInstance = new fabric.Image(imgElmt, {
@@ -79,26 +77,29 @@ reader.addEventListener("load", function () {
                 badgeInstance.bringToFront();
             }
         })
+        downloader.removeAttribute('disabled');
     }
     imgElmt.src = reader.result;
 }, false);
 
 uploader.addEventListener('change', function() {
-    var file    = document.querySelector('input[type=file]').files[0];
+    var file = document.querySelector('input[type=file]').files[0];
     if(file) {
         reader.readAsDataURL(file);
     }
 }, false)
 
 downloader.addEventListener('click', function(e) {
-    this.href = avatarImage.toDataURL({
-        format: 'png',
-        quality: 0.8,
-        width: 320,
-        height: 320
-    });
-    this.download = 'lovenkri-avatar.png';
-    window.open(this.href);
+    if(imgInstance) {
+        this.href = avatarImage.toDataURL({
+            format: 'png',
+            quality: 0.8,
+            width: 320,
+            height: 320
+        });
+        this.download = 'lovenkri-avatar.png';
+        window.open(this.href);
+    }
 }, false)
 
 avatarImage.setDimensions({width: 320, height: 320})
