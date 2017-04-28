@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>LOVE NKRI</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.11/fabric.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet">
         <style>
             body {
                 background-color: #bebebe;
@@ -13,8 +14,6 @@
                 bottom: 15%;
                 left: 15%;
                 right: 15%;
-                display: flex;
-                align-items: center;
             }
             #preview {
                 height: 320px;
@@ -46,19 +45,31 @@
             canvas {
                 height: 320px !important;
             }
+            .form-group {
+                width: 320px;
+                margin-left: auto;
+                margin-right: auto;
+            }
         </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.11/fabric.min.js"></script>
     </head>
     <body>
-        <div id="container">
-            <div id="preview">
-                <canvas id="avatar-image"></canvas>
-                <img id="badge-image" src="images/nkri.png">
+        <div id="container" class="container">
+            <div class="row">
+                <div id="preview">
+                    <div class="canvas-container" style="width: 300px; height: 150px; position: relative; user-select: none;"><canvas id="avatar-image" class="lower-canvas" width="300" height="150" style="position: absolute; width: 300px; height: 150px; left: 0px; top: 0px; touch-action: none; user-select: none;"></canvas><canvas class="upper-canvas " width="300" height="150" style="position: absolute; width: 300px; height: 150px; left: 0px; top: 0px; touch-action: none; user-select: none; cursor: default;"></canvas></div>
+                    <img id="badge-image" src="images/nkri.png">
+                </div>
             </div>
-        </div>
-        <div id="form">
-            <label>Choose Image</label>
-            <input type="file" id="upload" />
-            <a id="download" href="#">Download</a>
+            <div class="row">
+                <div class="form-group">
+                    <label>Choose Image</label>
+                    <input type="file" id="upload">
+                </div>
+                <div class="form-group">
+                    <a id="download" href="#" class="btn btn-success">Download</a>
+                </div>
+            </div>
         </div>
         <script src="js/index.js"></script>
     </body>
