@@ -1,4 +1,4 @@
-function() {
+(function() {
 var avatarImage = new fabric.Canvas('avatar-image');
 var uploader = document.querySelector("#upload");
 var downloader = document.querySelector('#download');
@@ -60,4 +60,4 @@ downloader.addEventListener('click', function(e) {
     this.download = 'lovenkri-avatar.png';
     window.open(this.href);
 }, false)
-}()
+}())
