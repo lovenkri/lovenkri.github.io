@@ -102,19 +102,26 @@ downloader.addEventListener('click', function(e) {
     }
 }, false)
 
-avatarImage.setDimensions({width: 320, height: 320})
-var badgeInstance = new fabric.Image(badge, {
-    top: 0,
-    left: avatarImage.width * 0.6,
-    width: avatarImage.width * 0.4,
-    height: avatarImage.height,
-    opacity: 1,
-    zIndex: 1,
-    selectable: false
-})
+document.onreadystatechange = function () {
+    switch (document.readyState) {
+        case "complete":
+            // The page is fully loaded.
+            avatarImage.setDimensions({width: 320, height: 320})
+            var badgeInstance = new fabric.Image(badge, {
+                top: 0,
+                left: avatarImage.width * 0.6,
+                width: avatarImage.width * 0.4,
+                height: avatarImage.height,
+                opacity: 1,
+                zIndex: 1,
+                selectable: false
+            })
 
-preview.tabIndex = 1000;
-preview.addEventListener("keydown", processKeys, false);
-avatarImage.add(badgeInstance);
-badgeInstance.bringToFront();
+            preview.tabIndex = 1000;
+            preview.addEventListener("keydown", processKeys, false);
+            avatarImage.add(badgeInstance);
+            badgeInstance.bringToFront();
+            break;
+    }
+}
 }())
