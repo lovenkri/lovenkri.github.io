@@ -5,7 +5,7 @@ var uploader = document.querySelector("#upload");
 var downloader = document.querySelector('#download');
 var badge = document.querySelector('#badge-image');
 var reader  = new FileReader();
-var imgInstance;
+var badgeInstance, imgInstance;
 
 function processKeys(evt) {
     evt = evt || window.event;
@@ -107,7 +107,7 @@ document.onreadystatechange = function () {
         case "complete":
             // The page is fully loaded.
             avatarImage.setDimensions({width: 320, height: 320})
-            var badgeInstance = new fabric.Image(badge, {
+            badgeInstance = new fabric.Image(badge, {
                 top: 0,
                 left: avatarImage.width * 0.6,
                 width: avatarImage.width * 0.4,
